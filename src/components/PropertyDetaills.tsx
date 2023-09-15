@@ -7,23 +7,25 @@ import Form from "@/shared/components/Form/Form"
 import { FormStage } from "@/enums/enums"
 import React from "react"
 import { TbSelector } from "react-icons/tb"
+import { IPropertyDetailsState } from "@/types/context"
 
 const PropertyDetails = () => {
-    const { setStage } = useFormContext()
+    const { setStage, propertyDetails, setPropertyDetails } = useFormContext()
 
-    const onSubmit = () => {
+    const onSubmit = (values: IPropertyDetailsState) => {
+        setPropertyDetails(values)
         setStage(FormStage.TWO)
     }
 
     return (
         <Form
             initialValues={{
-                propertyName: "",
-                addressLine: "",
-                closeDate: "",
-                country: "",
-                city: "",
-                zipCode: ""
+                propertyName: propertyDetails?.propertyName || "",
+                addressLine: propertyDetails?.addressLine || "",
+                closeDate: propertyDetails?.closeDate || "",
+                country: propertyDetails?.country || "",
+                city: propertyDetails?.city || "",
+                zipCode: propertyDetails?.zipCode || ""
             }}
             validationSchema={propertyDetailsSchema}
             onSubmit={onSubmit}

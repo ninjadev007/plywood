@@ -5,7 +5,7 @@ import React, { useState } from "react"
 import classNames from "classnames"
 
 const Tabs: React.FC<ITabsProps> = ({ options }) => {
-    const [selectedOption, setSelectedOption] = useState("")
+    const [selectedOption, setSelectedOption] = useState(options?.[0] || "")
 
     const handleSelect = (opt: string) => setSelectedOption(opt)
 

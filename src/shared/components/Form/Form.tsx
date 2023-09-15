@@ -4,7 +4,7 @@ import React from "react"
 
 const Form: React.FC<IFormProps> = ({ wrapperClasses, children, ...formikProps }) => {
     return (
-        <Formik {...formikProps}>
+        <Formik enableReinitialize {...formikProps}>
             {({ handleSubmit }) => <form className={wrapperClasses} onSubmit={handleSubmit}>
                 {children as React.ReactNode}
             </form>}

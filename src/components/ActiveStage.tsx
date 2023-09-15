@@ -35,7 +35,7 @@ const ActiveStage = () => {
                             "w-[2px] h-full",
                             { "bg-teal-900": item.stage < stage },
                             { "bg-gray-300": item.stage > stage },
-                            { "bg-teal-500": item.stage = stage },
+                            { "bg-teal-500": item.stage === stage },
                         )}></div>
                     </div>
                     <div></div>
