@@ -8,6 +8,9 @@ import React from "react"
 import Tabs from "@/shared/components/Tabs/Tabs"
 import TextInput from "@/shared/components/TextInput/TextInput"
 import { IoMdAdd } from "react-icons/io"
+import { BsCurrencyDollar } from "react-icons/bs"
+import { PiPercentBold } from "react-icons/pi"
+import BinarySelect from "@/shared/components/BinarySelect/BinarySelect"
 
 const Financing = () => {
     const { setStage } = useFormContext()
@@ -22,7 +25,7 @@ const Financing = () => {
                 term: "",
                 lender: "",
                 startDate: "",
-                loadAmount: "",
+                loanAmount: "",
                 typeOfRate: "",
                 interestRate: "",
                 amortization: "",
@@ -44,11 +47,26 @@ const Financing = () => {
                     </div>
                 </div>
                 <div className="flex flex-row gap-4 w-7/12">
-                    <TextInput fieldName="loadAmount" label="Loan Amount" />
+                    <TextInput leftIcon={<BsCurrencyDollar />} fieldName="loanAmount" label="Loan Amount" />
                     <TextInput fieldName="startDate" label="Start Date" />
                     <div className="opacity-0 flex cursor-pointer justify-center items-center rounded-lg p-2 w-10 h-10">
                         <IoMdAdd />
                     </div>
+                </div>
+                <div className="flex flex-row gap-4 w-4/12">
+                    <BinarySelect label="Type of Rate" options={["Fixed", "Variable"]} fieldName="typeOfRate" />
+                </div>
+                <div className="flex flex-row gap-4 w-4/12">
+                    <TextInput fieldName="interestRate" label="Interest Rate" rightIcon={<PiPercentBold />} />
+                </div>
+                <div className="flex flex-row gap-2 w-full">
+                    <BinarySelect label="Interest Capitalization" options={["Monthly", "Semi-Annual"]} fieldName="interestCapitalization" />
+                    <TextInput fieldName="interestOnlyPeriod" label="Interest Only Period" rightIcon={<>months</>} />
+                </div>
+                <div className="flex flex-row gap-2 w-full">
+                    <TextInput fieldName="term" label="Term" />
+                    <TextInput fieldName="amortization" label="Amortization" />
+                    <TextInput leftIcon={<BsCurrencyDollar />} fieldName="financingFees" label="Financing Fees" />
                 </div>
             </div>
             <div className="flex flex-row gap-4 justify-end">

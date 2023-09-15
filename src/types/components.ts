@@ -10,6 +10,10 @@ export interface ITextInputProps extends React.DetailedHTMLProps<React.InputHTML
     label?: string;
     wrapperClassName?: string;
     labelClassName?: string;
+    leftIcon?: JSX.Element;
+    rightIcon?: JSX.Element
+    leftIconClass?: string;
+    rightIconClass?: string;
 }
 
 export interface IFormButtonProps extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
@@ -17,4 +21,10 @@ export interface IFormButtonProps extends React.DetailedHTMLProps<React.ButtonHT
 
 export interface ITabsProps {
     options?: string[]
+}
+
+export interface IBinarySelectProps {
+    options?: string[];
+    fieldName: string;
+    label?: string;
 }

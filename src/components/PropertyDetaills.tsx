@@ -6,6 +6,7 @@ import { useFormContext } from "@/context/FormContext"
 import Form from "@/shared/components/Form/Form"
 import { FormStage } from "@/enums/enums"
 import React from "react"
+import { TbSelector } from "react-icons/tb"
 
 const PropertyDetails = () => {
     const { setStage } = useFormContext()
@@ -34,8 +35,8 @@ const PropertyDetails = () => {
                 <TextInput fieldName="propertyName" label="Property name" />
                 <TextInput fieldName="addressLine" label="Address line" />
                 <div className="flex flex-row gap-4">
-                    <TextInput fieldName="country" label="Country" />
-                    <TextInput fieldName="city" label="City" />
+                    <TextInput rightIconClass="text-xl" fieldName="country" label="Country" rightIcon={<TbSelector />} />
+                    <TextInput rightIconClass="text-xl" fieldName="city" label="City" rightIcon={<TbSelector />} />
                     <TextInput fieldName="zipCode" label="ZIP/Postal Code" />
                 </div>
                 <TextInput fieldName="closeDate" label="Close date" type="date" />

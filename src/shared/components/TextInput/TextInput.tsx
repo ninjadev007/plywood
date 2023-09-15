@@ -9,6 +9,10 @@ const TextInput: React.FC<ITextInputProps> = ({
     label, 
     wrapperClassName, 
     labelClassName, 
+    leftIcon,
+    rightIcon,
+    leftIconClass,
+    rightIconClass,
     ...inputProps 
 }) => {
     const { values, errors, touched, handleChange, setFieldTouched } = useFormikContext<IFormContext>()
@@ -24,17 +28,28 @@ const TextInput: React.FC<ITextInputProps> = ({
                 { "text-red-500": isError },
                 labelClassName
             )}>{label}</label> : <></>}
-            <input 
-                className={classNames(
-                    "p-2 w-full border-2 border-gray rounded-lg",
-                    { "border-red-500": isError }
-                )}
-                {...inputProps}
-                onChange={handleChange(fieldName)}
-                onBlur={() => setFieldTouched(fieldName)}
-                value={values[fieldName]}
-            />
-            {isError ? <div className="absolute bottom-[-25px] text-sm text-red-500">{errors[fieldName]}</div> : <></>}
+            <div className="relative w-full h-max flex justify-center items-center">
+                <input 
+                    className={classNames(
+                        "p-2 w-full border-2 border-gray rounded-lg",
+                        { "border-red-500": isError },
+                        { "pl-6": !!leftIcon }
+                    )}
+                    {...inputProps}
+                    onChange={handleChange(fieldName)}
+                    onBlur={() => setFieldTouched(fieldName)}
+                    value={values[fieldName]}
+                />
+                {leftIcon ? <div className={classNames(
+                    "absolute left-2",
+                    leftIconClass,
+                )}>{leftIcon}</div> : <></>}
+                {rightIcon ? <div className={classNames(
+                    "absolute right-2",
+                    rightIconClass,
+                )}>{rightIcon}</div> : <></>}
+            </div>
+            {isError ? <div className="absolute bottom-[-25px] text-sm text-red-500 truncate max-w-full">{errors[fieldName]}</div> : <></>}
         </div>
     )
 }

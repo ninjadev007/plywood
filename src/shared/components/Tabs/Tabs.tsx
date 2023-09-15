@@ -10,12 +10,13 @@ const Tabs: React.FC<ITabsProps> = ({ options }) => {
     const handleSelect = (opt: string) => setSelectedOption(opt)
 
     return (
-        <div className="w-full flex flex-row gap-4 border-b-[1px] border-gray-300">
+        <div className="w-full flex flex-row gap-8 border-b-[1px] border-gray-300">
             {options?.map(option => <div 
                 onClick={() => handleSelect(option)}
                 className={classNames(
-                    "flex flex-col cursor-pointer text-gray-500 py-2",
-                    { "border-b-2 border-teal-500 text-teal-500": selectedOption === option }
+                    "flex flex-col cursor-pointer  py-2 font-bold",
+                    { "border-b-2 border-teal-500 text-teal-900": selectedOption === option },
+                    { "text-gray-300": selectedOption !== option }
                 )}
                 key={option}
             >
