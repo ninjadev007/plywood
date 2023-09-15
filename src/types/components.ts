@@ -28,3 +28,16 @@ export interface IBinarySelectProps {
     fieldName: string;
     label?: string;
 }
+
+export type RentRollType = "Indoor" | "Outdoor" | "others";
+
+export interface IRentRolls {
+    id: string,
+    type: RentRollType,
+    rent: number,
+    width: number,
+    length: number,
+    marketRent?: string,
+    status: string,
+    sqm: number,
+}
